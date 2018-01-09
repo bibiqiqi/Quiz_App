@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+      <title>Quiz About the Wonderful World of Fungi</title>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <script
+  src="https://code.jquery.com/jquery-3.2.1.min.js"
+  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+  crossorigin="anonymous"></script>
+      <link rel="stylesheet" type="text/css" href="main.css">
+      <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+      <script type="text/javascript" src="index.js"></script>
+
+    </head>
+
+    <body>
+
+<!--first-page becomes hidden after user presses start button-->
+        <section class="first-page js-first-page">
+            <div class="container">
+                   <button class="js-start-quiz" type="button">What do you know about fungi?</button>
+            </div>
+        </section>
+
+ <!--!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!Question and Answers. Each one will appear 1 at a time, as the user interacts with it!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!-->
+          <section class="middle-pages hidden js-middle-pages">
+           <div class="container">
+                <form id="question-answer">
+                    <header role="banner">
+                        <h1>What do you know about fungi?</h1>
+                    </header>
+                    <main role="main js-current-question">
+ <!--current question rendered to js-current-question-->
+
+                  </main>
+              </form>
+            </div>
+          </section>
+<!--!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!Feedback Pages !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!-->
+
+<!--!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!Feedback for Correct Answer !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!-->
+ <section class="feedback-pages js-feedback-pages">
+      <div class="correct-answer js-correct-answer hidden">
+                <h1>You are correct!</h1>
+                <img src="https://imgur.com/xxn76NZ.gif" alt="Picture of Growing Mushroom">
+                <button class="js-feedback-next" type="button">Next --&gt</button>
+            </div>
+
+<!--!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!Feedback for Incorrect Answer !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!-->
+            <div class="incorrect-answer js-incorrect-answer hidden">
+                <h1>Incorrect! The correct answer is <span class="js-correct-answer">[some letter]</span></h1>
+                <img src="https://imgur.com/I2ATdbS.gif" alt="Picture of Shrinking Mushroom">
+                <button type="button">Next --&gt</button>
+            </div>
+      </section>
+<!--!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!Quiz Results Page!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!-->
+
+        <section class="results-page js-results-page hidden">
+            <div class="container">
+                <form class="question-answer">
+                    <header role="banner">
+                        <h1>You know this much about fungi:</h1>
+                    </header>
+                    <main role="main">
+                        <h2><span class="js-final-score">[some number] </span> out of 10 questions</h2>
+                        <div class="responsive-flex">
+                            <img src="https://imgur.com/sMp5IJH.gif" alt="Picture of Dancing Mushrooms">
+                            <button type="button">Take the<br>Quiz Again?</button>
+                        </div>
+                    </main>
+                </form>
+            </div>
+        </section>
+    </body>
+</html>
