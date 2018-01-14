@@ -108,56 +108,6 @@ const questionsAndAnswers = [
   }
 ];
 
-////////////generates the current question and multiple choice answers, with the current question number and the current score displayed, and renders it in the DOM ///////////////
-
-//function generateQuestionAndAnswers(number, template) {
-  ////passing the questionNumber as and argument into this function to plug it into an html string that will be passed to the renderQuestionsAndAnswers function
-//  console.log('generateQuestionsAnswers ran');
-//  return
-//  `
-//    <div class="question-${number}">
-//      <h2>${questionsAndAnswers[number-1].question}</h2>
-//    </div>
-
-//    <div class="answers">
-
-//      <input type="radio" name="question-${number}-answers" id="question-${number}-answers-A" value="A" />
-//      <label for ="question-${number}-answers-A">A) ${questionsAndAnswers[number-1].a}</label>
-
-//      <input type="radio" name="question-${number}-answers" id="question-${number}-answers-B" value="B" />
-//      label for="question-${number}-answers-B">B) ${questionsAndAnswers[number-1].b}</label>
-
-//      <input type="radio" name="question-${number}-answers" id="question-${number}-answers-C" value="C" />
-//      <label for="question-${number}-answers-C">C) ${questionsAndAnswers[number-1].c}</label>
-
-//      <input type="radio" name="question-${number}-answers" id="question-${number}-answer-D" value="D" />
-//      <label for="question-${number}-answers-D">D) ${questionsAndAnswers[number-1].d}</label>
-
-//    </div>
-
-//    <div class="bottom">
-//      <p>${number}/10<p>
-//      <button type="submit" class=js-question-${number}-submit>Submit</button>
-//    </div>
-
-//   </div>
-//`;
-//}
-//
-//function renderQuestionPrompt() {
-//  var progressHTML = '<span>(' + (state.currentQuestionIndex + 1) + '/' + state.questions.length + ')</span>'
-//  var questionText = state.questions[state.currentQuestionIndex].question;
-//  $('.js-question-text').html(progressHTML + questionText);
-//}
-
-//function renderQuestionChoices(answers) { //array
-//  $('#question-form label').each(function (index, label) {
-//    $(this).find('input').attr('value', answers[index]);
-//    $(this).find('input').prop('checked', false); //render choices without previous selection.
-//    $(this).find('span').text(answers[index]);
-//  });
-//}
-
 function renderQuestionAndAnswers() {
   ////passing generateQuestionAndAnswers as an argument of this function
   ////renders the html string that was generated to the DOM
@@ -246,25 +196,6 @@ function doAQuestion(questionNumber) {
     renderQuestionAndAnswers();
   }
 }
-
-//function checkAnswer(userChoice) {
-//  var correctChoice = state.questions[state.currentQuestionIndex].correctAnswer;
-//  if (userChoice == correctChoice) {
-//    state.correctCount++;
-//    renderQuestionFeedback(true);
-//    state.currentQuestionIndex++;
-//  } else if(userChoice == undefined){
-//    renderQuestionFeedback('unanswered');
-//  } else {
-//    renderQuestionFeedback(false);
-//    state.currentQuestionIndex++;
-//  }
-//  if (state.currentQuestionIndex == state.questions.length) {
-//    renderFinalResults()
-//  } else {
-//    renderQuestionCard();
-//  }
-//}
 
 function feedbackCorrect () {
 //exposes the correct-answer feeback page, when the user answers a question correctly
