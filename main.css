@@ -20,7 +20,7 @@ header, main {
 }
 
 header{
-  text-align: center;  
+  text-align: center;
 }
 
 main {
@@ -43,7 +43,7 @@ ul {
 }
 
 .first-page .container {
-  background-image: url("https://imgur.com/2tJGwgw.png"); 
+  background-image: url("https://imgur.com/2tJGwgw.png");
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center bottom;
@@ -62,7 +62,7 @@ ul {
 }
 
 .middle-pages label {
-    font-size: 1.5em;    
+    font-size: 1.5em;
 }
 
 .middle-pages .answers {
@@ -83,7 +83,7 @@ ul {
 
 .middle-pages .bottom p {
     left: 35px;
-    font-size: 1.25em; 
+    font-size: 1.25em;
 }
 
 .middle-pages .bottom button {
@@ -98,7 +98,11 @@ ul {
     padding: 5%;
     border-radius: 5%;
     text-align: center;
-    position: relative;
+    position: absolute;
+    background-color: white;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
 .correct-answer h1, .incorrect-answer h1 {
@@ -109,16 +113,16 @@ ul {
 .correct-answer img, .incorrect-answer img {
     width: 100%;
     height: auto;
-    z-position: -1;
+    z-index: 2;
 }
 
 .correct-answer button, .incorrect-answer button {
   position: absolute;
   bottom: 3%;
   right: 3%;
-  z-position: 1;
+  z-index: 2;
   font-size: 2em;
-  border-radius: 10%; 
+  border-radius: 10%;
 }
 
 .results-page {
@@ -153,7 +157,7 @@ ul {
 .hidden {
     display: none;
 }
-  
+
 /*media queries (original CSS is for vertically oriented smart phones*/
 
 /*horizontaly oriented smart phones*/
@@ -165,49 +169,49 @@ ul {
         margin: 10% auto;
         padding: 2%;
     }
-    
+
     .first-page .container {
         background-position: right;
     }
-    
+
     .first-page button {
         margin: 0;
         padding: 110px 20px;
         width: 300px;
     }
-    
+
     main {
         font-size: 1.5em;
         padding: 1%;
     }
-    
+
     .middle-pages h2 {
         margin: 1%;
     }
-    
+
     .middle-pages .answers {
         margin: 5%;
     }
- 
+
     .results-page .responsive-flex{
         display: flex;
         justify-content: space-evenly;
         align-items: center;
     }
-    
+
     .results-page img {
         width: 150px;
         height: 100%;
         margin: 0;
     }
-    
+
     .results-page button {
         font-size: 1.6em;
         width: 120px;
         height: 90px;
         margin: 0;
         padding: 2%;
-    } 
+    }
 }
 
 /*vertically oriented tablets*/
@@ -219,12 +223,12 @@ ul {
         margin: 5% auto;
         padding: 2%;
     }
-    
+
     .first-page .container {
         background-position: bottom;
         background-size: 76%;
     }
-    
+
     .first-page button {
         font-size: 5em;
         display: block;
@@ -232,40 +236,40 @@ ul {
         padding: 5%;
         width: 90%;
     }
-    
+
     h1 {
-        font-size: 5em;    
+        font-size: 5em;
     }
-    
+
     main {
         font-size: 4em;
     }
-    
+
     .middle-pages h2 {
         font-size: 4em;
         margin: 6%
     }
-    
+
     .middle-pages .answers {
-        margin: 10%;    
+        margin: 10%;
     }
-    
+
     .middle-pages label {
-        font-size: 3em;    
+        font-size: 3em;
     }
-    
+
     .middle-pages .bottom {
         bottom: 60px;
     }
-    
+
     .middle-pages .bottom p {
-    font-size: 2em; 
+    font-size: 2em;
     }
 
     .middle-pages .bottom button {
     font-size: 3em;
     }
-    
+
     .correct-answer, .incorrect-answer {
         width: 75%;
         padding: 3%;
@@ -279,27 +283,27 @@ ul {
     .correct-answer img, .incorrect-answer img {
         width: 100%;
         height: auto;
-    }  
+    }
     .results-page h2 {
         font-size: 1em;
         margin: 6%
     }
-    
+
     .results-page span{
         font-size: 1em;
     }
-    
+
     .results-page .responsive-flex{
         display: block;
         margin: 0 auto;
     }
-    
+
     .results-page img {
         display: block;
         width: 80%;
         margin: 0 auto;
     }
-    
+
     .results-page button {
         display: block;
         font-size: 3em;
@@ -324,7 +328,7 @@ ul {
         background-position: bottom right;
         background-size: 40%
     }
-    
+
     .first-page button {
         margin: 20% 10% 20% 5%;
         padding: 5%;
@@ -334,24 +338,29 @@ ul {
         font-size: 1.5em;
         padding: 1%;
     }
-    
+
+    h1 {
+      font-size: 6em;
+    }
+
     .middle-pages h2 {
         margin: 1%;
+        font-size: 3em;
     }
-    
+
     .middle-pages .answers {
         margin: 6%;
     }
-    
+
     .correct-answer h1, .incorrect-answer h1 {
         font-size: 3.2em;
     }
-    
+
     .results-page h2 {
         font-size: 2em;
         margin: 6%
     }
-    
+
     .results-page .responsive-flex{
         display: flex;
         justify-content: space-evenly;
@@ -364,11 +373,11 @@ ul {
         margin: 0;
         padding: 0;
     }
-    
+
     .results-page button {
         font-size: 3em;
         width: 25%;
         height: 25%;
         margin: 0;
-    }    
+    }
 }

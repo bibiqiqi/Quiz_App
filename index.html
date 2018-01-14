@@ -4,10 +4,6 @@
       <title>Quiz About the Wonderful World of Fungi</title>
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width, initial-scale=1">
-      <script
-  src="https://code.jquery.com/jquery-3.2.1.min.js"
-  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
-  crossorigin="anonymous"></script>
       <link rel="stylesheet" type="text/css" href="main.css">
       <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
     </head>
@@ -22,52 +18,71 @@
         </section>
 
  <!--!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!Question and Answers. Each one will appear 1 at a time, as the user interacts with it!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!-->
-          <section class="middle-pages hidden js-middle-pages">
+          <section class="middle-pages js-middle-pages hidden">
            <div class="container">
-                <form id="question-answer">
-                    <header role="banner">
-                        <h1>What do you know about fungi?</h1>
-                    </header>
-                    <main role="main js-current-question">
- <!--current question rendered to js-current-question-->
+              <form id="question-answer" action="#" method="post">
+                  <header role="banner">
+                      <h1>What do you know about fungi?</h1>
+                  </header>
+                    <div class="current-question">
+                      <h2 class="js-current-question"></h2>
+                    </div>
 
-                  </main>
-              </form>
-            </div>
-          </section>
+                    <div class="current-answers">
+
+                      <input type="radio" name="answers" id="answer-a" value="a" />
+                      <label class="js-answer-a" for ="answer-a"></label>
+
+                      <input type="radio" name="answers" id="answer-b" value="b" />
+                      <label class="js-answer-b" for="answer-b"></label>
+
+                      <input type="radio" name="answers" id="answer-c" value="c" />
+                      <label class="js-answer-c" for="answer-c"></label>
+
+                      <input type="radio" name="answers" id="answer-d" value="d" />
+                      <label class="js-answer-d" for="answer-d"></label>
+
+                      </div>
+
+                      <div class="bottom">
+                      <p class="js-current-score"></p>
+                      <button type="submit" class="js-question-submit">Submit</button>
+                  </div>
+               </form>
+           </div>
+        </section>
+
 <!--!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!Feedback Pages !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!-->
 
 <!--!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!Feedback for Correct Answer !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!-->
  <section class="feedback-pages js-feedback-pages">
-      <div class="correct-answer js-correct-answer hidden">
+      <div class="correct-answer js-correct-fb hidden">
                 <h1>You are correct!</h1>
                 <img src="https://imgur.com/xxn76NZ.gif" alt="Picture of Growing Mushroom">
-                <button class="js-feedback-next" type="button">Next --&gt</button>
+                <button class="js-correct-fb-submit" type="button">Next --&gt</button>
             </div>
 
 <!--!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!Feedback for Incorrect Answer !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!-->
-            <div class="incorrect-answer js-incorrect-answer hidden">
-                <h1>Incorrect! The correct answer is <span class="js-correct-answer">[some letter]</span></h1>
+            <div class="incorrect-answer js-incorrect-fb hidden">
+                <h1>Incorrect! The correct answer is <span class="js-correct-answer"></span></h1>
                 <img src="https://imgur.com/I2ATdbS.gif" alt="Picture of Shrinking Mushroom">
-                <button type="button">Next --&gt</button>
+                <button class="js-incorrect-fb-submit" type="button">Next --&gt</button>
             </div>
       </section>
 <!--!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!Quiz Results Page!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!-->
 
         <section class="results-page js-results-page hidden">
             <div class="container">
-                <form class="question-answer">
-                    <header role="banner">
-                        <h1>You know this much about fungi:</h1>
-                    </header>
-                    <main role="main">
-                        <h2><span class="js-final-score">[some number] </span> out of 10 questions</h2>
-                        <div class="responsive-flex">
-                            <img src="https://imgur.com/sMp5IJH.gif" alt="Picture of Dancing Mushrooms">
-                            <button type="button">Take the<br>Quiz Again?</button>
-                        </div>
-                    </main>
-                </form>
+                <header role="banner">
+                    <h1>You know this much about fungi:</h1>
+                </header>
+                <main role="main">
+                    <h2><span class="js-final-score">[some number] </span> out of 10 questions</h2>
+                    <div class="responsive-flex">
+                        <img src="https://imgur.com/sMp5IJH.gif" alt="Picture of Dancing Mushrooms">
+                        <button type="button">Take the<br>Quiz Again?</button>
+                    </div>
+                </main>
             </div>
         </section>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
