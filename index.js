@@ -111,6 +111,7 @@ const questionsAndAnswers = [
 function renderQuestionAndAnswers() {
   ////passing generateQuestionAndAnswers as an argument of this function
   ////renders the html string that was generated to the DOM
+  alert(questionsAndAnswers[10].currentQuestionNumber);
   let questionNumber = questionsAndAnswers[10].currentQuestionNumber;
   let currentQuestion = questionsAndAnswers[questionNumber-1].question;
   let currentAnswerA = questionsAndAnswers[questionNumber-1].a;
@@ -152,8 +153,8 @@ function quizStart() {
   });
 }
 
-function getCorrectAnswer(questionNumber) {
-  let correctAnswer = questionsAndAnswers[questionNumber-1].answerLetter;
+function getCorrectAnswer() {
+  let correctAnswer = questionsAndAnswers[questionsAndAnswers[10].currentQuestionNumber-1].answerLetter;
   console.log('getCorrectAnswer ran');
   alert(correctAnswer);
   return correctAnswer;
@@ -168,50 +169,83 @@ function getUsersAnswer() {
   return usersAnswer;
 }
 
-function doAQuestion(questionNumber) {
-  //takes values from questionsAndAnswers and renders them into an html template in the DOM
+function doTheQuestions() {
+  //takes values from questionsAndAnswers and re in the DOM
 //event listener, waiting for user to select "submit" button for current question
   $('.js-question-submit').on("click", function(event) {
-//if user's answer is equal to the correct answer, reveal the "correct" feedback page
-  if (getCorrectAnswer(questionNumber)===getUsersAnswer(questionNumber)) {
-    //feedbackCorrect();
+//if user's answer is equal to the correct answer, reveal the "correct" feedback page, increment the value of the currentQuestionNumber variable
+  if (getCorrectAnswer(questionsAndAnswers[10].currentQuestionNumber)===getUsersAnswer(questionsAndAnswers[10].currentQuestionNumber)) {
     feedbackCorrect();
-    $(".js-correct-fb-submit").on("click", function(){
-      $(".js-correct-fb").addClass('hidden');
-    });
+    endFeedbackCorrect();
+    //$(".js-correct-fb-submit").on("click", function(){
+    //  $(".js-correct-fb").addClass('hidden');
+    //  questionsAndAnswers[10].currentQuestionNumber++;
+    //  alert(questionsAndAnswers[10].currentQuestionNumber);
+    //  if(questionsAndAnswers[10].currentQuestionNumber == questionsAndAnswers.length) {
+    //    quizResults();
+    //  } else {
+    //    renderQuestionAndAnswers();
+    //  }
+    //});
   }
-  //otherwise, reveal the "incorrect" feedback page with the correct answer
+  //otherwise, reveal the "incorrect" feedback page with the correct answer, increment the value of the currentQuestionNumber variable
   else {
-    //feedbackIncorrect(questionNumber);
     feedbackIncorrect();
-    $(".js-incorrect-fb-submit").on("click", function(){
-      $(".js-incorrect-fb").addClass('hidden');
-    });
-  }
-  questionsAndAnswers[10].currentQuestionNumber++;
-});
-  if(questionsAndAnswers[10].currentQuestionNumber == questionsAndAnswers.length) {
-    quizResults();
-  } else {
-    renderQuestionAndAnswers();
-  }
+    endFeedbackIncorrect();
+    //$(".js-incorrect-fb-submit").on("click", function(){
+    //  $(".js-incorrect-fb").addClass('hidden');
+    //  questionsAndAnswers[10].currentQuestionNumber++;
+    //  alert(questionsAndAnswers[10].currentQuestionNumber);
+    //  if(questionsAndAnswers[10].currentQuestionNumber == questionsAndAnswers.length) {
+    //    quizResults();
+    //  } else {
+    //    renderQuestionAndAnswers();
+    //  }
+    //});
+    }
+  });
 }
 
-function feedbackCorrect () {
+function feedbackCorrect() {
 //exposes the correct-answer feeback page, when the user answers a question correctly
   $( ".js-correct-fb" ).removeClass("hidden");
   console.log('feedbackCorrect ran');
 }
 
-function feedbackIncorrect (number) {
+function endFeedbackCorrect(){
+  $(".js-correct-fb-submit").on("click", function(){
+    $(".js-correct-fb").addClass('hidden');
+    questionsAndAnswers[10].currentQuestionNumber++;
+    alert(questionsAndAnswers[10].currentQuestionNumber);
+    if(questionsAndAnswers[10].currentQuestionNumber == questionsAndAnswers.length) {
+      quizResults();
+    } else {
+      renderQuestionAndAnswers();
+    }
+  });
+}
+
+function feedbackIncorrect() {
 //exposes the incorrect-answer feeback page, with the correct answer, when the user answers a question incorrectly
   $( ".js-incorrect-fb" ).removeClass("hidden");
-  //let correctAnswer = questionsAndAnswers[number-1].answer;
+  let correctAnswer = questionsAndAnswers[questionsAndAnswers[10].currentQuestionNumber-1].answer;
 
-  //$('.js-correct-answer').html(correctAnswer);
+  $('.js-correct-answer').html(correctAnswer);
   console.log('feedbackIncorrect ran');
 }
 
+function endFeedbackIncorrect(){
+  $(".js-incorrect-fb-submit").on("click", function(){
+    $(".js-incorrect-fb").addClass('hidden');
+    questionsAndAnswers[10].currentQuestionNumber++;
+    alert(questionsAndAnswers[10].currentQuestionNumber);
+    if(questionsAndAnswers[10].currentQuestionNumber == questionsAndAnswers.length) {
+      quizResults();
+    } else {
+      renderQuestionAndAnswers();
+    }
+  });
+}
 //function endFeedbackPage(classToEnd) {
 //    $(classToEnd).addClass('hidden');
 //    console.log('endFeedbackpage ran');
@@ -225,4 +259,4 @@ function quizResults() {
 }
 
 quizStart();
-doAQuestion(questionsAndAnswers[10].currentQuestionNumber);
+doTheQuestions();
