@@ -1,4 +1,6 @@
 ////array of objects that stores all the questions and multiple choices, and the corresponding correct answer
+'use strict';
+
 const questionsAndAnswers = [
   //question 1
   {
@@ -213,6 +215,7 @@ function feedbackCorrect() {
 }
 
 function endFeedbackCorrect(){
+  $(".js-correct-fb-submit").off();
   $(".js-correct-fb-submit").on("click", function(){
     $(".js-correct-fb").addClass('hidden');
     questionsAndAnswers[10].currentQuestionNumber++;
@@ -235,6 +238,7 @@ function feedbackIncorrect() {
 }
 
 function endFeedbackIncorrect(){
+  $(".js-incorrect-fb-submit").off();
   $(".js-incorrect-fb-submit").on("click", function(){
     $(".js-incorrect-fb").addClass('hidden');
     questionsAndAnswers[10].currentQuestionNumber++;
