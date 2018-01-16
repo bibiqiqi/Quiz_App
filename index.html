@@ -12,12 +12,10 @@
 
 <!--first-page becomes hidden after user presses start button-->
         <section class="first-page js-first-page">
-            <div class="container">
-                   <button class="js-start-quiz" type="button">What do you know about fungi?</button>
-            </div>
+<!--!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!Insert First Page!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!-->
         </section>
 
- <!--!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!Question and Answers. Each one will appear 1 at a time, as the user interacts with it!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!-->
+<!--!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!Question and Answers Template!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!-->
           <section class="middle-pages js-middle-pages hidden">
            <div class="container">
               <form id="question-answer" action="#" method="post">
@@ -29,62 +27,34 @@
                     </div>
 
                     <div class="current-answers">
-
-                      <input type="radio" name="answers" id="answer-a" value="a" />
+                      <input type="radio" name="answers" id="answer-a" class="answers" value="a" />
                       <label class="js-answer-a" for ="answer-a"></label>
-
-                      <input type="radio" name="answers" id="answer-b" value="b" />
+                      <input type="radio" name="answers" id="answer-b" class="answers" value="b" />
                       <label class="js-answer-b" for="answer-b"></label>
-
-                      <input type="radio" name="answers" id="answer-c" value="c" />
+                      <input type="radio" name="answers" id="answer-c" class="answers" value="c" />
                       <label class="js-answer-c" for="answer-c"></label>
-
-                      <input type="radio" name="answers" id="answer-d" value="d" />
+                      <input type="radio" name="answers" id="answer-d" class="answers" value="d" />
                       <label class="js-answer-d" for="answer-d"></label>
-
                       </div>
 
                       <div class="bottom">
-                      <p class="js-current-score"></p>
+                      <p class="current-question"><span class="js-current-question-number"></span>/10</p>
+                      <p class="current-score"><span class="js-current-score"></span> out of 10</p>
                       <button type="submit" class="js-question-submit">Submit</button>
                   </div>
                </form>
            </div>
         </section>
 
-<!--!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!Feedback Pages !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!-->
+ <section class="feedback-pages js-feedback-pages hidden">
+<!--!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!Insert Feedback Popup !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!-->
+ </section>
 
-<!--!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!Feedback for Correct Answer !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!-->
- <section class="feedback-pages js-feedback-pages">
-      <div class="correct-answer js-correct-fb hidden">
-                <h1>You are correct!</h1>
-                <img src="https://imgur.com/xxn76NZ.gif" alt="Picture of Growing Mushroom">
-                <button class="js-correct-fb-submit" type="button">Next --&gt</button>
-            </div>
-
-<!--!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!Feedback for Incorrect Answer !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!-->
-            <div class="incorrect-answer js-incorrect-fb hidden">
-                <h1>Incorrect! The correct answer is <span class="js-correct-answer"></span></h1>
-                <img src="https://imgur.com/I2ATdbS.gif" alt="Picture of Shrinking Mushroom">
-                <button class="js-incorrect-fb-submit" type="button">Next --&gt</button>
-            </div>
-      </section>
-<!--!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!Quiz Results Page!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!-->
 
         <section class="results-page js-results-page hidden">
-            <div class="container">
-                <header role="banner">
-                    <h1>You know this much about fungi:</h1>
-                </header>
-                <main role="main">
-                    <h2><span class="js-final-score">[some number] </span> out of 10 questions</h2>
-                    <div class="responsive-flex">
-                        <img src="https://imgur.com/sMp5IJH.gif" alt="Picture of Dancing Mushrooms">
-                        <button type="button">Take the<br>Quiz Again?</button>
-                    </div>
-                </main>
-            </div>
+  <!--!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!Insert Quiz Reults !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!-->
         </section>
+
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         <script type="text/javascript" src="index.js"></script>
     </body>

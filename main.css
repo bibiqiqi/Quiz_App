@@ -78,17 +78,24 @@ ul {
 
 .middle-pages .bottom p, .middle-pages .bottom button {
     display: inline-block;
-    position: absolute;
 }
 
-.middle-pages .bottom p {
+.middle-pages .bottom .current-question {
     left: 35px;
     font-size: 1.25em;
+    position: absolute;
 }
 
 .middle-pages .bottom button {
     right: 35px;
     font-size: 1.6em;
+    position: absolute;
+}
+
+.middle-pages .bottom .current-score {
+    display: block;
+    width: 30%;
+    margin: auto;
 }
 
 .correct-answer, .incorrect-answer {
