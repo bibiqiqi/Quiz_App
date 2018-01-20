@@ -56,7 +56,7 @@ const questionsAndAnswers = [
     question: "Which one of the following are not a type of fungus?",
     a: "Mold",
     b: "Yeast",
-    c: "The organism that causes the skin infection known as athlete’s foot",
+    c: '"Athlete’s foot"',
     d: "Lichen",
     answer: "Lichen",
     answerLetter: "d"
@@ -109,6 +109,7 @@ const questionsAndAnswers = [
   }
 ];
 
+//plucks values from the questionsAndAnswers array
 function renderQuestionAndAnswers() {
   let questionNumber = questionsAndAnswers[10].currentQuestionNumber;
   let currentScore = questionsAndAnswers[10].currentCorrect;
@@ -118,7 +119,7 @@ function renderQuestionAndAnswers() {
   let currentAnswerC = questionsAndAnswers[questionNumber-1].c;
   let currentAnswerD = questionsAndAnswers[questionNumber-1].d;
 
-  // inserts that HTML into the DOM
+// then inserts them into an html template, in the DOM
   $('.js-current-question').html(currentQuestion);
   $('.js-answer-a').html(currentAnswerA);
   $('.js-answer-b').html(currentAnswerB);
@@ -128,31 +129,20 @@ function renderQuestionAndAnswers() {
   $('.js-current-score').html(currentScore);
 }
 
-//function hasUserSelectedAnswer(number){
-////takes the number of the current question as an argument, and determines whether user selected an answer or not
-//  var radios = document.getElementsByName(`question-${number}-answers`);
-//iterates through all the multiple choice answers for current question to look for the checked attribute
-//     for (var i = 0; i < radios.length; i++) {
-//          if (radios[i].checked) {
-//              return true;
-//          }
-//          else {
-//            return false;
-//          }
-//      }
-//    console.log('`hasUserSelectedAnswer` ran');
-//}
-
+//generates html for the first page
 function generateFirstPage() {
   $('.js-first-page').html(`
       <div class="container">
-             <button class="js-start-quiz" type="button">What do you know about fungi?</button>
+         <h1>What do you know about fungi?</h1>
+         <img src="./start_and_end/mushroom_lady.gif" alt="Collage of Woman with Mushrooms in Head">
+         <button class="js-start-quiz" type="button">Start Quiz <span>(to find out)</span></button>
       </div>
     `);
 }
 
+//listens for user to select start quiz button, then hides first page
+//and reveals quiz pages, calling renderQuestionsAndAnswers
 function quizStart() {
-  //listens for user to click on start button, then hides the start page, and exposes the middle-pages template
   $('.js-start-quiz').on("click", function(event) {
     $('.js-first-page').addClass('hidden');
     $('.js-middle-pages').removeClass('hidden');
@@ -162,160 +152,134 @@ function quizStart() {
   });
 }
 
-function didUserAnswer() {
-  var chx = document.getElementsByTagName('input');
-    for (var i=0; i<chx.length; i++) {
-      // If you have more than one radio group, also check the name attribute
-      // for the one you want as in && chx[i].name == 'choose'
-      // Return true from the function on first match of a checked item
-      if (chx[i].type == 'radio' && chx[i].checked) {
-        alert("true");
-        return true;
-      }
-    }
-    // End of the loop, return false
-    alert("false");
-    return false;
-  }
-
-//  for (i = 1; i < 4; i++) {
-//      if (document.querySelector(`input[name=answers]:checked` == true)) {
-//          alert("true");
-//          return true;
-//      }
-//      else {
-//        alert("false");
-//        return false;
-//      }
-//    }
-//  }
-
-//  if (document.querySelector(`input[name=answers]:checked`).length == true) {
-       // at least one of the radio buttons was checked
-//       alert('true');
-//       return true; // allow whatever action would normally happen to continue
-//  }
-//  else {
-       // no radio button was checked
-//       alert('false');
-//       return false; // stop whatever action would normally happen
-//  }
-//}
-
+//checks user's answer against correct answer, and holds the conditional flow
+//of which functions to call, based on whether the user's answer is right
 function checkAnswer(userAnswer) {
   let correctAnswer = questionsAndAnswers[questionsAndAnswers[10].currentQuestionNumber-1].answerLetter;
-  //let isChecked = $('.answers').is(':checked');
-  //alert(isChecked);
-  //let usersAnswer = document.querySelector(`input[name=answers]:checked`).value;
-  if (didUserAnswer() == false){
-    alert('Choose a Question');
-  }
-  else if (didUserAnswer() == true && userAnswer == correctAnswer) {
+  if (userAnswer == correctAnswer) {
     questionsAndAnswers[10].currentCorrect++;
     feedbackCorrect();
     questionsAndAnswers[10].currentQuestionNumber++;
     endFeedbackCorrect();
-  }
-  else if (didUserAnswer() == true && userAnswer !== correctAnswer) {
+  } else {
     feedbackIncorrect();
     questionsAndAnswers[10].currentQuestionNumber++;
     endFeedbackIncorrect();
   }
   if(questionsAndAnswers[10].currentQuestionNumber == questionsAndAnswers.length) {
     quizResults();
+    quizAgain();
   } else {
     renderQuestionAndAnswers();
   }
+  console.log('checkAnswer ran');
 }
 
+//generates html string for the correct-answer feeback div
 function generateFeedbackCorrect(){
   $('.js-feedback-pages').html(`
-    <div class="correct-answer js-correct-fb">
-      <h1 class="js-fb-header">You are correct!</h1>
-      <img class="js-fb-img" src="https://imgur.com/xxn76NZ.gif" alt="Picture of Growing Mushroom">
+    <div class="container correct-answer js-correct-fb">
+      <img class="portrait-grow" src="./answer_responses/cropped_compressed_growing_mushroom.gif" alt="Animation of Growing Mushroom">
+      <img class="landscape-grow" src="./answer_responses/compressed_growing_mushroom.gif" alt="Animation of Growing Mushroom">
+      <h1>You are correct!</h1>
       <button class="js-correct-fb-submit" type="button">Next</button>
     </div>
     `);
 }
 
+//reveals the correct-answer feedback div and calls the generateFeedbackCorrect function
 function feedbackCorrect() {
   $( ".js-feedback-pages" ).removeClass("hidden");
+  $('.js-middle-pages').addClass('hidden');
   generateFeedbackCorrect();
   console.log('feedbackCorrect ran');
 }
 
+//event-listener for user to select the next button to remove the feedback pages
 function endFeedbackCorrect(){
   $(".js-correct-fb-submit").off();
   $(".js-correct-fb-submit").on("click", function(){
-    $(".js-correct-fb").addClass('hidden');
+    $(".js-feedback-pages").addClass('hidden');
+    $('.js-middle-pages').removeClass('hidden');
   });
+  console.log('endFeedbackCorrect ran');
 }
 
+//generates html string for the incorrect-answer feeback div
 function generateFeedbackIncorrect(){
   $('.js-feedback-pages').html(`
-    <div class="incorrect-answer js-incorrect-fb">
+    <div class="container incorrect-answer js-incorrect-fb">
+        <img class="portrait-shrink" src="./answer_responses/cropped_compressed_shrinking_mushroom.gif" alt="Animation of Shrinking Mushroom">
+        <img class="landscape-shrink" src="./answer_responses/compressed_shrinking_mushroom.gif" alt="Animation of Shrinking Mushroom">
         <h1>Incorrect! The correct answer is <span class="js-correct-answer"></span></h1>
-        <img src="https://imgur.com/I2ATdbS.gif" alt="Picture of Shrinking Mushroom">
         <button class="js-incorrect-fb-submit" type="button">Next</button>
     </div>
     `);
 }
 
+//reveals the incorrect-answer feedback div and calls the generateFeedbackInorrect function
 function feedbackIncorrect() {
   $( ".js-feedback-pages" ).removeClass("hidden");
+  $('.js-middle-pages').addClass('hidden');
   generateFeedbackIncorrect();
   let correctAnswer = questionsAndAnswers[questionsAndAnswers[10].currentQuestionNumber-1].answer;
   $('.js-correct-answer').html(correctAnswer);
   console.log('feedbackIncorrect ran');
 }
 
+//event-listener for user to select the next button to remove the feedback pages
 function endFeedbackIncorrect(){
   $(".js-incorrect-fb-submit").off();
   $(".js-incorrect-fb-submit").on("click", function(){
-    $(".js-incorrect-fb").addClass('hidden');
+    $(".js-feedback-pages").addClass('hidden');
+    $('.js-middle-pages').removeClass('hidden');
   });
+  console.log('endFeedbackIncorrect ran');
 }
 
+//generates html string for the results-page div
 function generateQuizResults(){
   $('.js-results-page').html(`
     <div class="container">
-        <header role="banner">
-            <h1>You know this much about fungi:</h1>
-        </header>
-        <main role="main">
-            <h2><span class="js-current-score"></span> out of 10 questions</h2>
-            <div class="responsive-flex">
-                <img src="https://imgur.com/sMp5IJH.gif" alt="Picture of Dancing Mushrooms">
-                <button class="js-quiz-again" type="button">Take the<br>Quiz Again?</button>
-            </div>
-        </main>
+          <h1>You know this much about fungi:</h1>
+          <h2>${questionsAndAnswers[10].currentCorrect} out of 10 questions</h2>
+      <img src="./start_and_end/end_mushroom_lady.gif" alt="Collage of Woman with Mushrooms in Head">
+      <button class="js-quiz-again" type="button">Take the<br>Quiz Again?</button>
     </div>
-    `);
+  `);
 }
 
+//hides the quiz pages and reveals the quiz results, calling generateQuizResults
 function quizResults() {
+ $(".js-feedback-pages").addClass('hidden');
  $( ".js-middle-pages" ).addClass("hidden");
  $( ".js-results-page" ).removeClass("hidden");
  generateQuizResults();
+ console.log ('quizResults ran');
 }
 
+//event listener for user to select take quiz again button
+//calls the generateFirstPage function again,
 function quizAgain() {
   $(".js-quiz-again").on("click", function(){
     $( ".js-results-page" ).addClass("hidden");
+    generateFirstPage();
     $( ".js-first-page" ).removeClass("hidden");
     questionsAndAnswers[10].currentQuestionNumber=0;
     questionsAndAnswers[10].currentCorrect=0;
+    quizStart()
+    console.log ('quizAgain ran');
   });
 }
 
 function doTheQuestions() {
-$('.js-question-submit').off();
-$('.js-question-submit').on("click", function(event) {
-event.preventDefault();
-
-let userAnswer = document.querySelector(`input[name=answers]:checked`).value;
-checkAnswer(userAnswer);
-  });
+  $('.js-question-submit').off();
+  $('.js-question-submit').on("click", function(event) {
+    event.preventDefault();
+    let userAnswer = document.querySelector(`input[name=answers]:checked`).value;
+    checkAnswer(userAnswer);
+    console.log ('doTheQuestions ran');
+});
 }
 
 generateFirstPage();

@@ -6,52 +6,64 @@
       <meta name="viewport" content="width=device-width, initial-scale=1">
       <link rel="stylesheet" type="text/css" href="main.css">
       <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+      <link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
+
     </head>
 
     <body>
 
 <!--first-page becomes hidden after user presses start button-->
-        <section class="first-page js-first-page">
+        <section class="first-page js-first-page" role="region">
 <!--!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!Insert First Page!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!-->
         </section>
 
 <!--!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!Question and Answers Template!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!-->
-          <section class="middle-pages js-middle-pages hidden">
+          <section class="middle-pages js-middle-pages hidden" role="region">
            <div class="container">
               <form id="question-answer" action="#" method="post">
                   <header role="banner">
                       <h1>What do you know about fungi?</h1>
                   </header>
-                    <div class="current-question">
-                      <h2 class="js-current-question"></h2>
-                    </div>
+                    <div class="current-q-a">
+                      <div class="current-question">
+                        <h2 class="js-current-question"></h2>
+                      </div>
 
-                    <div class="current-answers">
-                      <input type="radio" name="answers" id="answer-a" class="answers" value="a" />
-                      <label class="js-answer-a" for ="answer-a"></label>
-                      <input type="radio" name="answers" id="answer-b" class="answers" value="b" />
-                      <label class="js-answer-b" for="answer-b"></label>
-                      <input type="radio" name="answers" id="answer-c" class="answers" value="c" />
-                      <label class="js-answer-c" for="answer-c"></label>
-                      <input type="radio" name="answers" id="answer-d" class="answers" value="d" />
-                      <label class="js-answer-d" for="answer-d"></label>
+                      <div class="answers">
+                        <div>
+                          <input type="radio" name="answers" id="answer-a" class="answers" value="a" checked/>
+                          <label class="js-answer-a" for ="answer-a"></label>
+                        </div>
+                        <div>
+                          <input type="radio" name="answers" id="answer-b" class="answers" value="b"/>
+                          <label class="js-answer-b" for="answer-b"></label>
+                        </div>
+                        <div>
+                          <input type="radio" name="answers" id="answer-c" class="answers" value="c"/>
+                          <label class="js-answer-c" for="answer-c"></label>
+                        </div>
+                        <div>
+                          <input type="radio" name="answers" id="answer-d" class="answers" value="d"/>
+                          <label class="js-answer-d" for="answer-d"></label>
+                        </div>
                       </div>
 
                       <div class="bottom">
-                      <p class="current-question"><span class="js-current-question-number"></span>/10</p>
-                      <p class="current-score"><span class="js-current-score"></span> out of 10</p>
-                      <button type="submit" class="js-question-submit">Submit</button>
+                        <p class="current-question"><span class="js-current-question-number"></span>/10</p>
+                        <p class="current-score"><span class="js-current-score"></span> correct, out of 10</p>
+                        <button type="submit" class="js-question-submit">Submit</button>
+                      </div>
                   </div>
                </form>
            </div>
         </section>
 
- <section class="feedback-pages js-feedback-pages hidden">
+ <section class="feedback-pages js-feedback-pages hidden" role="region">
 <!--!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!Insert Feedback Popup !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!-->
  </section>
 
 
-        <section class="results-page js-results-page hidden">
+        <section class="results-page js-results-page hidden" role="region">
   <!--!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!Insert Quiz Reults !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!-->
         </section>
 
