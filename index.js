@@ -276,7 +276,9 @@ function doTheQuestions() {
   $('.js-question-submit').off();
   $('.js-question-submit').on("click", function(event) {
     event.preventDefault();
-    let userAnswer = document.querySelector(`input[name=answers]:checked`).value;
+    let userAnswer = $("input[type=radio][name=answers]:checked").val();
+    //let userAnswer = document.querySelector('input[name=answers]:checked').value;
+    debugger;
     checkAnswer(userAnswer);
     console.log ('doTheQuestions ran');
 });
